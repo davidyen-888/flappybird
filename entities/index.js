@@ -12,6 +12,6 @@ export default (restart) => {
 
   return {
     physics: { engine, world },
-    Bird: Bird(world, "red", { x: 50, y: 200 }, { width: 40, height: 40 }),
+    Bird: Bird(world, "red", { x: 50, y: 350 }, { width: 40, height: 40 }),
   };
 };
