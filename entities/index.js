@@ -2,6 +2,8 @@ import Matter from "matter-js";
 import Bird from "../components/Bird";
 import Floor from "../components/Floor";
 import { Dimensions } from "react-native";
+import Obstacle from "../components/Obstacle";
+import { getPipeSizePosPair } from "../utils/random";
 
 // get the device screen height and width
 const windowHeight = Dimensions.get("window").height;
@@ -16,14 +18,30 @@ export default (restart) => {
   let world = engine.world;
   world.gravity.y = 0.4;
 
+  const pipeSizePosA = getPipeSizePosPair();
+
   return {
     physics: { engine, world },
     Bird: Bird(world, "red", { x: 50, y: 350 }, { width: 40, height: 40 }),
+    ObstacleTop1: Obstacle(
+      world,
+      "ObstacleTop1",
+      "blue",
+      pipeSizePosA.pipeTop.pos,
+      pipeSizePosA.pipeTop.size
+    ),
     Floor: Floor(
       world,
       "green",
       { x: windowWidth / 2, y: windowHeight },
       { width: windowWidth, height: 50 }
+    ),
+    ObstacleBottom1: Obstacle(
+      world,
+      "ObstacleBottom1",
+      "green",
+      pipeSizePosA.pipeBottom.pos,
+      pipeSizePosA.pipeBottom.size
     ),
   };
 };
