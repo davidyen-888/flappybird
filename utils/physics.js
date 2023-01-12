@@ -23,8 +23,22 @@ const Physics = (entities, { touches, time, dispatch }) => {
   Matter.Engine.update(engine, time.delta);
 
   for (let index = 0; index < 2; index++) {
+    if (
+      // check if the bird is in the same x position as the pipe
+      entities.Bird.body.bounds.max.x <=
+        entities[`ObstacleTop${index + 1}`].body.bounds.min.x &&
+      !entities[`ObstacleTop${index + 1}`].point
+    ) {
+      // set the point to true so that we don't add a point every frame
+      entities[`ObstacleTop${index + 1}`].point = true;
+      // add a point to the score
+      dispatch({ type: "add-point" });
+    }
+
     // if the pipe is out of the screen, move it to the right
     if (entities[`ObstacleTop${index + 1}`].body.bounds.max.x <= 0) {
+      // reset the point
+      entities[`ObstacleTop${index + 1}`].point = false;
       // reset the pipe position
       const pipeSizePos = getPipeSizePosPair(windowWidth * 0.9);
       Matter.Body.setPosition(entities[`ObstacleTop${index + 1}`].body, {
@@ -47,6 +61,8 @@ const Physics = (entities, { touches, time, dispatch }) => {
       y: 0,
     });
   }
+
+  // detect collision between the bird and the floor/pipes
   Matter.Events.on(engine, "collisionStart", (event) => {
     // if the bird collides with the floor, restart the game
     dispatch({ type: "game-over" });
