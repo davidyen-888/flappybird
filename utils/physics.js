@@ -24,9 +24,8 @@ const Physics = (entities, { touches, time, dispatch }) => {
 
   for (let index = 0; index < 2; index++) {
     if (
-      // check if the bird is in the same x position as the pipe
-      entities.Bird.body.bounds.max.x <=
-        entities[`ObstacleTop${index + 1}`].body.bounds.min.x &&
+      entities[`ObstacleTop${index + 1}`].body.bounds.max.x <=
+        entities.Bird.body.bounds.min.x &&
       !entities[`ObstacleTop${index + 1}`].point
     ) {
       // set the point to true so that we don't add a point every frame
@@ -37,8 +36,6 @@ const Physics = (entities, { touches, time, dispatch }) => {
 
     // if the pipe is out of the screen, move it to the right
     if (entities[`ObstacleTop${index + 1}`].body.bounds.max.x <= 0) {
-      // reset the point
-      entities[`ObstacleTop${index + 1}`].point = false;
       // reset the pipe position
       const pipeSizePos = getPipeSizePosPair(windowWidth * 0.9);
       Matter.Body.setPosition(entities[`ObstacleTop${index + 1}`].body, {
@@ -49,6 +46,8 @@ const Physics = (entities, { touches, time, dispatch }) => {
         x: pipeSizePos.pipeBottom.pos.x,
         y: pipeSizePos.pipeBottom.pos.y,
       });
+      // reset the point
+      entities[`ObstacleTop${index + 1}`].point = false;
     }
 
     // move the top and bottom pipes 3 pixels to the left every time the function is called

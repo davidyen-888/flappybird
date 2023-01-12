@@ -11,9 +11,9 @@ export default function App() {
   const [currPoints, setCurrPoints] = useState(0);
 
   // set running to true when the component mounts
-  useEffect(() => {
-    setRunning(true);
-  }, []);
+  // useEffect(() => {
+  //   setRunning(true);
+  // }, []);
 
   return (
     <View style={{ flex: 1 }}>
