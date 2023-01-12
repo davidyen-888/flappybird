@@ -52,18 +52,18 @@ export default (restart) => {
       pipeSizePosB.pipeTop.pos,
       pipeSizePosB.pipeTop.size
     ),
-    Floor: Floor(
-      world,
-      "green",
-      { x: windowWidth / 2, y: windowHeight },
-      { width: windowWidth, height: 50 }
-    ),
     ObstacleBottom2: Obstacle(
       world,
       "ObstacleBottom2",
       "green",
       pipeSizePosB.pipeBottom.pos,
       pipeSizePosB.pipeBottom.size
+    ),
+    Floor: Floor(
+      world,
+      "green",
+      { x: windowWidth / 2, y: windowHeight },
+      { width: windowWidth, height: 50 }
     ),
   };
 };

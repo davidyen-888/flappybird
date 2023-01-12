@@ -1,6 +1,6 @@
 import Matter from "matter-js";
 import { Dimensions } from "react-native";
-import { getPipeSizePosPair } from "./utils/random";
+import { getPipeSizePosPair } from "./random";
 
 // get the device screen width
 const windowWidth = Dimensions.get("window").width;
@@ -47,6 +47,10 @@ const Physics = (entities, { touches, time, dispatch }) => {
       y: 0,
     });
   }
+  Matter.Events.on(engine, "collisionStart", (event) => {
+    // if the bird collides with the floor, restart the game
+    dispatch({ type: "game-over" });
+  });
 
   return entities;
 };

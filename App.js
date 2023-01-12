@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import entities from "./entities";
-import Physics from "./physics";
+import Physics from "./utils/physics";
 
 export default function App() {
   const [running, setRunning] = useState(false);
+  const [gameEngine, setGameEngine] = useState(null);
+
   // set running to true when the component mounts
   useEffect(() => {
     setRunning(true);
@@ -15,9 +17,20 @@ export default function App() {
   return (
     <View style={{ flex: 1 }}>
       <GameEngine
+        ref={(ref) => {
+          setGameEngine(ref);
+        }}
         systems={[Physics]}
         entities={entities()}
         running={running}
+        onEvent={(e) => {
+          switch (e.type) {
+            case "game-over":
+              setRunning(false);
+              gameEngine.stop();
+              break;
+          }
+        }}
         style={{
           position: "absolute",
           top: 0,
