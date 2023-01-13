@@ -14,3 +14,6 @@ A flappy bird clone made with [React Native](https://facebook.github.io/react-na
 1. Tap the screen to make the bird fly.
 2. Avoid the pipes.
 3. Get the highest score and brag about it to your friends!
+
+## Demo
+<img src="https://user-images.githubusercontent.com/61106644/212234531-c81a648d-0613-4133-ad8a-35485861008d.gif" alt="iPhone 14 Pro Simulator" width="200"/>
