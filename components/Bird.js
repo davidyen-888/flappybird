@@ -1,6 +1,6 @@
 import Matter from "matter-js";
 import React from "react";
-import { View } from "react-native";
+import { Image } from "react-native";
 
 const Bird = (props) => {
   // get the width and height of the bird
@@ -11,25 +11,21 @@ const Bird = (props) => {
   const xBody = props.body.position.x - widthBody / 2;
   const yBody = props.body.position.y - heightBody / 2;
 
-  const color = props.color;
-
   return (
-    <View
+    <Image
+      source={require("../assets/bird.png")}
       style={{
-        borderWidth: 1,
-        borderColor: color,
-        borderStyle: "solid",
         position: "absolute",
         left: xBody,
         top: yBody,
         width: widthBody,
         height: heightBody,
       }}
-    ></View>
+    />
   );
 };
 
-export default (world, color, pos, size) => {
+export default (world, pos, size) => {
   // create a rectangle body as the bird
   const initBird = Matter.Bodies.rectangle(
     pos.x,
@@ -42,7 +38,6 @@ export default (world, color, pos, size) => {
 
   return {
     body: initBird,
-    color,
     pos,
     renderer: <Bird />,
   };

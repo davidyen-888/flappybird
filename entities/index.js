@@ -23,18 +23,18 @@ export default (restart) => {
 
   return {
     physics: { engine, world },
-    Bird: Bird(world, "red", { x: 50, y: 350 }, { width: 40, height: 40 }),
+    Bird: Bird(world, { x: 50, y: 350 }, { width: 48, height: 48 }),
     ObstacleTop1: Obstacle(
       world,
       "ObstacleTop1",
-      "blue",
+      "khaki",
       pipeSizePosA.pipeTop.pos,
       pipeSizePosA.pipeTop.size
     ),
     ObstacleBottom1: Obstacle(
       world,
       "ObstacleBottom1",
-      "green",
+      "lightgreen",
       pipeSizePosA.pipeBottom.pos,
       pipeSizePosA.pipeBottom.size
     ),
@@ -42,20 +42,20 @@ export default (restart) => {
     ObstacleTop2: Obstacle(
       world,
       "ObstacleTop2",
-      "blue",
+      "lightcyan",
       pipeSizePosB.pipeTop.pos,
       pipeSizePosB.pipeTop.size
     ),
     ObstacleBottom2: Obstacle(
       world,
       "ObstacleBottom2",
-      "green",
+      "wheat",
       pipeSizePosB.pipeBottom.pos,
       pipeSizePosB.pipeBottom.size
     ),
     Floor: Floor(
       world,
-      "green",
+      "olive",
       { x: windowWidth / 2, y: windowHeight },
       { width: windowWidth, height: 50 }
     ),
