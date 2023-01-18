@@ -57,13 +57,7 @@ export default function App() {
       </GameEngine>
       {/* Home screen */}
       {!running ? (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <View style={styles.container}>
           <TouchableOpacity
             style={{
               backgroundColor: "black",
