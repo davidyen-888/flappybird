@@ -13,7 +13,7 @@
     "expo-status-bar": "~1.4.2",
     "matter-js": "^0.18.0",
     "react": "18.1.0",
-    "react-native": "0.70.5",
+    "react-native": "0.73.4",
     "react-native-game-engine": "^1.2.0"
   },
   "devDependencies": {
